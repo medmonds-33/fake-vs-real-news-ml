@@ -74,16 +74,16 @@ toc: true
 
 **Confusion matrix**
 
-<br><img src="https://github.gatech.edu/user-attachments/assets/886ef3de-09b0-4a54-9e40-54878d8b1c27" alt="image" width="50%" height="50%"><br>
+<br><img src="lin_svm_visuals/confusion_matrix.png" alt="image" width="50%" height="50%"><br>
 - [[911, 4], [13, 6893]] → extremely few errors, with slightly more real→fake than fake→real which means that the classifier is a bit conservative about calling something “real.”
 
 **Calibration**
-<br><img src="https://github.gatech.edu/user-attachments/assets/b9b1d543-1551-4dba-85df-540dd61e4f34" alt="image" width="50%" height="50%"><br>
+<br><img src="lin_svm_visuals/calibration_curve.png" alt="image" width="50%" height="50%"><br>
 - Reliability diagram tracks the identity line closely. It clearly shows a very low Brier which confirms high-quality probabilities which are well calibrated, so threshold choices are reliable rather than being over or under-confident.
 
 **ROC/PR curves**
-<br><img src="https://github.gatech.edu/user-attachments/assets/7a884581-3ec4-4f36-8180-487032857e2a" alt="image" width="50%" height="50%"><br>
-<br><img src="https://github.gatech.edu/user-attachments/assets/a6652c6a-6586-497a-8e26-36f3512de1c7" alt="image" width="50%" height="50%"><br>
+<br><img src="lin_svm_visuals/roc_curve.png" alt="image" width="50%" height="50%"><br>
+<br><img src="lin_svm_visuals/pr_curve.png" alt="image" width="50%" height="50%"><br>
 - Near-perfect separability (AUC/AP ≈ 1.0). This indicates a near-perfect ranking to where almost every real article receives a higher score than fake articles, and precision stays around 1 across nearly all recall.
 
 **Per-subject robustness**
@@ -106,16 +106,16 @@ toc: true
 - Accuracy 0.9955, Macro-F1 0.9893, ROC-AUC 0.99971, PR-AUC 0.99996, Brier 0.00410. Accuracy indicates that around 99.55% of test articles are correctly labeled overall, while Macro-F1 shows both classes (fake/real) are strong, and not just the majority class.
 
 **Confusion matrix**
-<br><img src="https://github.gatech.edu/user-attachments/assets/a2c16b24-9b45-4070-a89d-9ba09bf074a3" alt="image" width="50%" height="50%"><br>
+<br><img src="log_reg_visuals/confusion_matrix.png" alt="image" width="50%" height="50%"><br>
 - [[907, 8], [27, 6879]] → very few errors. There are more real→fake (27) than fake→real (8) mistakes, which slightly depresses the fake-class F1 and thus the Macro-F1.
 
 **Calibration**
-<br><img src="https://github.gatech.edu/user-attachments/assets/4e3c123c-925a-4ca9-a810-67faecc165bd" alt="image" width="50%" height="50%"><br>
+<br><img src="log_reg_visuals/calibration_curve.png" alt="image" width="50%" height="50%"><br>
 - The reliability curve lies close to the diagonal with a mild under-confidence around mid-high probabilities while the low Brier which is equal to 0.00410 confirms probability quality is strong enough for thresholding decisions.
 
 **ROC/PR curves**
-<br><img src="https://github.gatech.edu/user-attachments/assets/f37abb7d-30f1-40cb-ad6f-35f056a1a02f" alt="image" width="50%" height="50%"><br>
-<br><img src="https://github.gatech.edu/user-attachments/assets/b629feeb-17c2-410f-9ac0-7cdbaae45ca6" alt="image" width="50%" height="50%"><br>
+<br><img src="log_reg_visuals/roc_curve.png" alt="image" width="50%" height="50%"><br>
+<br><img src="log_reg_visuals/pr_curve.png" alt="image" width="50%" height="50%"><br>
 - Near-perfect ranking (AUC ≈ 0.9997, AP ≈ 0.99996) leads to the fact that almost every real item scores above fake items, and precision remains around 1.0 across nearly all recall.
 
 **Per-subject robustness**
@@ -138,16 +138,16 @@ toc: true
 - Accuracy 0.9743, Macro-F1 0.9406, ROC-AUC 0.99533, PR-AUC 0.99935, Brier 0.03140. Accuracy means around 97.43% of test items were labeled correctly. Macro-F1 treats fake and real equally and the 0.94 score indicates the fake class lags a bit relative to real, despite strong overall accuracy.
 
 **Confusion matrix**
-<br><img src="https://github.gatech.edu/user-attachments/assets/51cd6ae9-3306-4297-8542-e31c31aa6031" alt="image" width="50%" height="50%"><br>
+<br><img src="tree_visuals/confusion_matrix.png" alt="image" width="50%" height="50%"><br>
 - [[865, 50], [151, 6755]] → still low error rates, but there are more real→fake (151) than fake→real (50) mistakes. That asymmetry explains why Macro-F1 < Accuracy which is that the fake-class F1 is mainly pulled down by those extra real→fake errors.
 
 **Calibration**
-<br><img src="https://github.gatech.edu/user-attachments/assets/e34209d5-3ca7-4564-8a96-d43ea0f4e09e" alt="image" width="50%" height="50%"><br>
+<br><img src="tree_visuals/calibration_curve.png" alt="image" width="50%" height="50%"><br>
 - The reliability curve is generally good but shows step-like behavior typical of tree ensembles which then results in mid-probability bins that deviate from the diagonal, while high-probability bins saturate near 1.0. The Brier is around 0.0314 which is solid but worse than the other linear models, so probability thresholds should be picked with care.
 
 **ROC/PR curves**
-<br><img src="https://github.gatech.edu/user-attachments/assets/0ce3b2e3-50f0-440b-ac68-7d18f6e07461" alt="image" width="50%" height="50%"><br>
-<br><img src="https://github.gatech.edu/user-attachments/assets/d9cf7bd5-30dc-407f-a439-3e3fb89427e5" alt="image" width="50%" height="50%"><br>
+<br><img src="tree_visuals/roc_curve.png" alt="image" width="50%" height="50%"><br>
+<br><img src="tree_visuals/pr_curve.png" alt="image" width="50%" height="50%"><br>
 - Ranking quality remains excellent with AUC around 0.9953 and AP around 0.99935, which points out that most real items outrank fake ones, and precision stays around 1.0 until very high recall.
 
 **Per-subject robustness**
@@ -170,16 +170,16 @@ toc: true
 - Accuracy 0.9760, Macro-F1 0.9447, ROC-AUC 0.99361, PR-AUC 0.99891, Brier 0.01931. Accuracy implies that around 97.6% of test articles are labeled correctly overall. Macro-F1 treats fake and real equally and the 0.9447 score shows both classes are strong, with a small gap relative to accuracy due to asymmetry in errors.
 
 **Confusion matrix**
-<br><img src="https://github.gatech.edu/user-attachments/assets/31de9dc2-59fa-48eb-a3e6-cd76a9a0dffa" alt="image" width="50%" height="50%"><br>
+<br><img src="lb_visuals/confusion_matrix.png" alt="image" width="50%" height="50%"><br>
 - [[876, 39], [149, 6757]] → still low error rates, but there are more real→fake than fake→real mistakes. That imbalance nudges the fake-class F1 downward, which explains why Macro-F1 is less than the Accuracy.
 
 **Calibration**
-<br><img src="https://github.gatech.edu/user-attachments/assets/6c26b6b8-c7fc-45ac-ae71-4d8c07bbbbb9" alt="image" width="50%" height="50%"><br>
+<br><img src="lb_visuals/calibration_curve.png" alt="image" width="50%" height="50%"><br>
 - The reliability curve tracks the diagonal closely at low and high probability bins, with mild optimism in the mid–high region. The Brier is around 0.0193 confirms probability quality is good but not as sharp as the some of the linear-probability baselines.
 
 **ROC/PR curves**
-<br><img src="https://github.gatech.edu/user-attachments/assets/c5a8878f-7a39-4434-83c4-9a13444b6cc7" alt="image" width="50%" height="50%"><br>
-<br><img src="https://github.gatech.edu/user-attachments/assets/81ba4ea1-79e7-4e33-97cb-169edd3ab60e" alt="image" width="50%" height="50%"><br>
+<br><img src="lb_visuals/roc_curve.png" alt="image" width="50%" height="50%"><br>
+<br><img src="lb_visuals/pr_curve.png" alt="image" width="50%" height="50%"><br>
 - Ranking remains excellent with AUC is around 0.9936 and AP is around 0.9989. This means that most real items score above fake ones, and precision stays around 1.0 until very high recall.
 
 **Per-subject robustness**
@@ -203,16 +203,16 @@ toc: true
 
 **Confusion matrix**
 
-<br><img src="https://github.gatech.edu/user-attachments/assets/5cbb4e0f-46bc-4d49-9538-b6974b7dc938" alt="image" width="50%" height="50%"><br>
+<br><img src="topics_visuals/confusion_matrix.png" alt="image" width="50%" height="50%"><br>
 - [[807, 108], [265, 6641]]. Errors skew real→fake more than fake→real, meaning the probe is slightly conservative and over-flags some real articles as fake. This is plausible when a few topics correlate with sensational or political language that appears in both classes.
 
 **Calibration**
-<br><img src="https://github.gatech.edu/user-attachments/assets/6db70006-2bff-4ed8-9518-ee9de2aaa570" alt="image" width="50%" height="50%"><br>
+<br><img src="topics_visuals/calibration_curve.png" alt="image" width="50%" height="50%"><br>
 - Reliability is decent at high confidence but over-confident in the mid-probability bins, consistent with a higher Brier score than our linear baselines. Then topic mixtures compress uncertainty and the downstream classifier tends to push toward the extremes without token-level evidence.
 
 **ROC/PR curves**
-<br><img src="https://github.gatech.edu/user-attachments/assets/38d2037f-c895-4f0a-9a9e-be8f664281a9" alt="image" width="50%" height="50%"><br>
-<br><img src="https://github.gatech.edu/user-attachments/assets/679ccb7a-2d46-45f6-8cf0-aab77295644f" alt="image" width="50%" height="50%"><br>
+<br><img src="topics_visuals/roc_curve.png" alt="image" width="50%" height="50%"><br>
+<br><img src="topics_visuals/pr_curve.png" alt="image" width="50%" height="50%"><br>
 - ROC-AUC is still strong with 0.9806, but lower in comparison to all of the supervised models. PR-AUC stays high at around 0.9972 given class balance and the probe’s ability to rank many reals above fakes, though precision softens near full recall.
 
 **Per-subject robustness**
@@ -236,16 +236,16 @@ toc: true
 
 **Confusion matrix**
 
-<br><img src="https://github.gatech.edu/user-attachments/assets/0c3ee33d-dbfb-4ffa-9a78-7917ff1b0ecb" alt="image" width="50%" height="50%"><br>
+<br><img src="kmeans_visuals/confusion_matrix.png" alt="image" width="50%" height="50%"><br>
 - [[767, 148], [149, 6757]] → Both clusters capture their dominant class well, with only about 300 total misassignments. Slightly more real→fake than fake→real errors suggest that some real news pieces use stylistic or topical patterns that resemble fake content
 
 **Calibration**
-<br><img src="https://github.gatech.edu/user-attachments/assets/166a4edf-63dc-46d6-81ad-e1b5e9b83f3c" alt="image" width="50%" height="50%"><br>
+<br><img src="kmeans_visuals/calibration_curve.png" alt="image" width="50%" height="50%"><br>
 - K-Means doesn’t output probabilities, but distance-based soft assignments can be interpreted as confidence. The Brier being around 0.038 reflects moderate reliability—reasonable for an unsupervised model but not as precise as calibrated supervised classifiers.
 
 **ROC/PR curves**
-<br><img src="https://github.gatech.edu/user-attachments/assets/d9f48fbd-80ad-4fb4-9521-10e808a720b6" alt="image" width="50%" height="50%"><br>
-<br><img src="https://github.gatech.edu/user-attachments/assets/3949605c-8a5a-4137-a529-c44896141296" alt="image" width="50%" height="50%"><br>
+<br><img src="kmeans_visuals/roc_curve.png" alt="image" width="50%" height="50%"><br>
+<br><img src="kmeans_visuals/pr_curve.png" alt="image" width="50%" height="50%"><br>
 - The ROC-AUC of 0.908 and PR-AUC of 0.977 are strong for an unsupervised probe. This confirms that the clusters themselves provide a very good ranking of the articles. The high PR-AUC is largely driven by the model's high confidence in the large 'real' class.
 
 **Per-subject robustness**
