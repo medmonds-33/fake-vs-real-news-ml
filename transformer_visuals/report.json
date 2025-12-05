@@ -1,0 +1,13 @@
+{
+  "name": "transformer",
+  "model": "distilbert-base-uncased",
+  "temporal": true,
+  "temperature": 1.4,
+  "metrics": {
+    "accuracy": 0.995,
+    "macro_f1": 0.9927156177156178,
+    "roc_auc": 0.9997796628842129,
+    "pr_auc": 0.9999393363473432,
+    "brier": 0.005496512895385575
+  }
+}
